@@ -1,0 +1,7 @@
+{
+  "project": "Green Light Pay Merchant Sandbox",
+  "kind": "Recovered merchant client",
+  "source": "potify-green-light-pay at `9cde0741196d23098527067271b89c3d4e5023b8`. Five recovered public merchant frontend files. Preview at the original base path. Server-backed actions require the original sandbox API. The favicon was recovered separately from the public merchant route. Recovered the original public checkout and developer pages plus their separate JavaScript and styles from green-light-pay.replit.app on November 25.",
+  "scope": "Original Replit backend and provider contracts remain outside this export. Missing server routes limit local operation.",
+  "prepared": "2026-11-25"
+}
