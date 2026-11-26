@@ -176,7 +176,7 @@ async function loadAll({ quiet = false } = {}) {
     updateStaleIndicator();
     // The terminal does not render polled data. Rebuilding it would destroy a command
     // being typed and discard the terminal's scroll position for no visible benefit.
-    if (state.workspace !== 'terminal') renderCurrentWorkspace();
+    if (state.workspace !== 'terminal' || !$('#terminal-output')) renderCurrentWorkspace();
     if (!quiet) toast('Data refreshed.');
   } catch (error) {
     toast(error.message || 'Refresh failed.', true);
@@ -215,7 +215,6 @@ function navigateTo(ws, { intentId = null } = {}) {
   history.replaceState(null, '', `${BASE}/developer#${ws}${params}`);
   updateNavActive();
   renderCurrentWorkspace();
-  if (ws === 'terminal') requestAnimationFrame(() => $('#terminal-input')?.focus());
   // Trigger workspace-specific async loaders immediately after render
   if (ws === 'reconciliation') loadReconciliationCards();
   if (ws === 'verification' && state.selectedIntentId) loadEvidenceForIntent(state.selectedIntentId);
@@ -243,6 +242,7 @@ function renderCurrentWorkspace() {
   if (!root || !state.dashboard) return;
   root.innerHTML = (WS_RENDERERS[state.workspace] || overview)();
   bindWorkspaceEvents();
+  if (state.workspace === 'terminal') requestAnimationFrame(() => $('#terminal-input')?.focus());
 }
 
 // ─── WORKSPACE: Overview ──────────────────────────────────────────────────────

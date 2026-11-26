@@ -3,6 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "check:public": "node --check public/green-light-pay/app.js && node --check public/green-light-pay/nav.js && node --check public/green-light-pay/checkout.js && node --check public/green-light-pay/developer.js"
-  }
+    "check:public": "node --check public/green-light-pay/app.js && node --check public/green-light-pay/nav.js && node --check public/green-light-pay/checkout.js && node --check public/green-light-pay/developer.js",
+    "start": "npm --workspace @workspace/green-light-pay run start",
+    "test": "npm --workspace @workspace/green-light-pay test",
+    "test:browser": "npm --workspace @workspace/green-light-pay run test:browser"
+  },
+  "workspaces": [
+    "sandbox"
+  ]
 }

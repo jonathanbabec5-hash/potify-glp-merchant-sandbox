@@ -1,26 +1,20 @@
 # Green Light Pay Merchant Sandbox
 ## Whitepaper · public developer edition
 
-**November 25, 2026 · Recovered merchant client**
+**November 26, 2026 · Recovered merchant client and sandbox server**
 
 ### Goal and audience
 
 Let an operator inspect how a checkout request moves from counter to receipt. The immediate audience is point-of-sale engineers and pilot merchants.
 
-### Design and implementation
+### From intent to receipt
 
-The original client calls partner, merchant, intent, screening, audit and reconciliation endpoints. The export preserves the client contract and leaves the server as a separate dependency. Preserve the distinction between the merchant declaring a basket, a provider screening it and an independent observer reconciling it. The same intent spans those records.
+The Replit server binds a frozen basket to a customer handoff, compares the point-of-sale amount against the partner and observer fixtures, and records successive states. A receipt is meaningful when the supporting records reconcile. Inspect the [domain logic](../sandbox/src/core.mjs) beside the [HTTP lifecycle tests](../sandbox/test/stage1-http.test.mjs) and trace a declined path alongside an accepted one.
 
-### What a contributor can establish
+### Evidence and limits
 
-The merchant client, checkout and developer-console scripts passed syntax checks. The counter rendered locally. Five startup API requests returned 404 on a static host because the original merchant server was unavailable. A missing backend is visible in local preview. A mock HTTP 200 would mislead an operator about what the original service performs.
+The restored frontend matches nine static files byte for byte. The three HTML entry points also match after substituting the server’s documented base path. The SQLite sandbox and its seeded fixtures support local verification. Real provider approvals, custody arrangements, customer transactions and signed merchant agreements require their own evidence.
 
-### Evidence and outstanding work
+### Proposed first contribution
 
-Original Replit backend and provider contracts remain outside this export. Missing server routes limit local operation. The next acceptance case is concrete. Trace one sample request through intent, checkout and receipt in the code. Confirm server ownership before an integrated merchant test.
-
-### Place in POTIFY
-
-Offer a scoped GLP discovery session only after a merchant confirms a concrete reconciliation problem. The marketing plan gives the test window and the evidence for a commercial outcome.
-
-[Source provenance](source.json) · [Build log](BUILD-LOG.md) · [Marketing plan](MARKETING.md)
+Pick one fictional intent and trace the status, amount and evidence available to the cashier and the customer at each step. Report the first state whose explanation on screen is inconsistent with the fixture. Green Light Pay maintains its own finances, contracts and governance.
