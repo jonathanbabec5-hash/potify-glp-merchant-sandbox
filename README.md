@@ -2,6 +2,14 @@
 
 [Complete repository directory tree](docs/DIRECTORY.md)
 
+## Where the counter’s promise meets the missing server
+
+A merchant hands over a basket. A checkout makes a request. Someone later has to reconcile the result. That sequence is what makes the original merchant client worth reading, even where the service it expected has not been recovered.
+
+Trace the [checkout client](public/green-light-pay/checkout.js) beside the [developer console](public/green-light-pay/developer.js). The release notes record five startup API requests returning 404 on a static host. That is a useful map of the missing backend, not a failed customer payment or a reason to invent a receipt.
+
+Select one fictional request and describe the minimum response that would let an operator understand the next state. Keep provider contracts, customer data and settlement out of the example. Green Light Pay’s finances, contracts and governance remain separate.
+
 **Recovered merchant client.** Let an operator inspect how a checkout request moves from counter to receipt.
 
 ### Setup and usage
