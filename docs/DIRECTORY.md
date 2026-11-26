@@ -1,30 +1,55 @@
-# Repository tree
+# Complete repository directory
+
+Tracked paths relative to the repository root. The bundled Replit source is under `sandbox/`.
 
 ```text
-potify-glp-merchant-sandbox/
-├── docs/
-│   ├── BUILD-LOG.md
-│   ├── DIRECTORY.md
-│   ├── MARKETING.md
-│   ├── WHITEPAPER.md
-│   └── source.json
-├── public/
-│   └── green-light-pay/
-│       ├── checkout/
-│       │   └── index.html
-│       ├── developer/
-│       │   └── index.html
-│       ├── app.js
-│       ├── checkout.css
-│       ├── checkout.js
-│       ├── developer.css
-│       ├── developer.js
-│       ├── favicon.svg
-│       ├── index.html
-│       ├── nav.js
-│       ├── shared-nav.css
-│       └── styles.css
-├── .gitignore
-├── README.md
-└── package.json
+.github/workflows/sandbox-tests.yml
+.gitignore
+README.md
+docs/BUILD-LOG.md
+docs/DIRECTORY.md
+docs/MARKETING.md
+docs/WHITEPAPER.md
+docs/source.json
+package-lock.json
+package.json
+public/green-light-pay/app.js
+public/green-light-pay/checkout.css
+public/green-light-pay/checkout.js
+public/green-light-pay/checkout/index.html
+public/green-light-pay/developer.css
+public/green-light-pay/developer.js
+public/green-light-pay/developer/index.html
+public/green-light-pay/favicon.svg
+public/green-light-pay/index.html
+public/green-light-pay/nav.js
+public/green-light-pay/shared-nav.css
+public/green-light-pay/styles.css
+sandbox/.gitignore
+sandbox/README.md
+sandbox/package.json
+sandbox/public/app.js
+sandbox/public/checkout.css
+sandbox/public/checkout.html
+sandbox/public/checkout.js
+sandbox/public/developer.css
+sandbox/public/developer.html
+sandbox/public/developer.js
+sandbox/public/favicon.svg
+sandbox/public/index.html
+sandbox/public/nav.js
+sandbox/public/shared-nav.css
+sandbox/public/styles.css
+sandbox/src/core.mjs
+sandbox/src/redact.mjs
+sandbox/src/reset.mjs
+sandbox/src/server.mjs
+sandbox/test/core.test.mjs
+sandbox/test/developer-terminal.test.mjs
+sandbox/test/stage1-claims.test.mjs
+sandbox/test/stage1-evidence.test.mjs
+sandbox/test/stage1-exception.test.mjs
+sandbox/test/stage1-http.test.mjs
+sandbox/test/terminal-input.playwright.mjs
+sandbox/test/ui-contract.test.mjs
 ```

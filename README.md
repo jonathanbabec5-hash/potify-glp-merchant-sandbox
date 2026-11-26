@@ -1,46 +1,35 @@
 # Green Light Pay Merchant Sandbox
 
-[Complete repository directory tree](docs/DIRECTORY.md)
+[Complete repository tree](docs/DIRECTORY.md) · [Whitepaper](docs/WHITEPAPER.md) · [Marketing and sales plan](docs/MARKETING.md) · [Build record](docs/BUILD-LOG.md)
 
-## Where the counter’s promise meets the missing server
+A cashier starts a fictional sale. A customer opens the checkout on a phone. The developer console shows how the same request passes screening, gains a simulated authorization and acquires a reconciled receipt. A contributor can follow the complete path locally with the recovered Replit server, client and fixtures.
 
-A merchant hands over a basket. A checkout makes a request. Someone later has to reconcile the result. That sequence is what makes the original merchant client worth reading, even where the service it expected has not been recovered.
+## Run the counter
 
-Trace the [checkout client](public/green-light-pay/checkout.js) beside the [developer console](public/green-light-pay/developer.js). The release notes record five startup API requests returning 404 on a static host. That is a useful map of the missing backend, not a failed customer payment or a reason to invent a receipt.
-
-Select one fictional request and describe the minimum response that would let an operator understand the next state. Keep provider contracts, customer data and settlement out of the example. Green Light Pay’s finances, contracts and governance remain separate.
-
-**Recovered merchant client.** Let an operator inspect how a checkout request moves from counter to receipt.
-
-### Setup and usage
-
-Use Node.js 24 for the included checks. Use Python 3 for the local static preview.
+Use Node.js 24 and npm. Run these commands from the repository root.
 
 ```sh
-python3 -m http.server 8000 --bind 127.0.0.1 --directory public
+npm ci
+npm test
+GLP_SANDBOX=1 HOST=127.0.0.1 BASE_PATH=/green-light-pay npm start
 ```
 
-Review the receipt contract. Open http://127.0.0.1:8000/green-light-pay/ in a browser. 
+Open http://127.0.0.1:4173/green-light-pay/. Start a fictional basket, follow the qualified-partner handoff, and open the developer console to compare the observed facts with the final receipt. Local records are stored in SQLite. The source includes the POS, partner and observer fixtures used by the demonstration.
 
-### Developer entry points
+## Inspect and verify
 
-The original client calls partner, merchant, intent, screening, audit and reconciliation endpoints. The export preserves the client contract and leaves the server as a separate dependency. Explore `public/` in the full tree.
+- Follow the [domain logic](sandbox/src/core.mjs) into the [HTTP routes](sandbox/src/server.mjs).
+- Inspect the [cashier interface](sandbox/public/app.js), [customer checkout](sandbox/public/checkout.js) and [developer console](sandbox/public/developer.js).
+- Reproduce one discrepancy with a synthetic basket and name the state that should have changed. Partner agreements and actual settlements require separate evidence.
+- The [static frontend](public/green-light-pay/) remains available for interface review at its original route. The server-backed sandbox is the local entry point for the full checkout.
 
-### Verification
-
-The merchant client, checkout and developer-console scripts passed syntax checks. The counter rendered locally. Five startup API requests returned 404 on a static host because the original merchant server was unavailable.
+For the optional browser suite, keep the sandbox running as above, then run the following commands in a second terminal.
 
 ```sh
-node --check public/green-light-pay/app.js
-node --check public/green-light-pay/nav.js
-node --check public/green-light-pay/checkout.js
-node --check public/green-light-pay/developer.js
+npx playwright install chromium
+GLP_TEST_URL=http://127.0.0.1:4173/green-light-pay npm run test:browser
 ```
 
-### Release scope
+## Source
 
-Original Replit backend and provider contracts remain outside this export. Missing server routes limit local operation. potify-green-light-pay at `9cde0741196d23098527067271b89c3d4e5023b8`. Five recovered public merchant frontend files. Preview at the original base path. Server-backed actions require the original sandbox API. The favicon was recovered separately from the public merchant route. Recovered the original public checkout and developer pages plus their separate JavaScript and styles from green-light-pay.replit.app on November 25.
-
-[Technical whitepaper](docs/WHITEPAPER.md) · [Marketing and sales plan](docs/MARKETING.md) · [Dated developer log](docs/BUILD-LOG.md)
-
-Existing asset and code terms remain applicable. Public access to a recording, illustration, brand or manuscript does not itself grant commercial reuse rights.
+The [original Replit source snapshot](https://github.com/jonathanbabec5-hash/potify-green-light-pay/tree/82f4f6265044034b144ad11f64a916be319aa97f/replit-source/green-light-pay) contains 27 source, configuration and test files. The working copy lives in `sandbox/`. The root npm workspace adds a reproducible lockfile and separates offline tests from the optional browser suite. No live payment processor is connected. Green Light Pay retains its own governance, contracts and finances.

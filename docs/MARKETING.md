@@ -20,4 +20,4 @@ Use `glp-merchant-sandbox-first-public-build` for the pilot. Record a 28-day pre
 
 Proposed pilot budget is $0 for distribution and two founder hours for the first demonstration. At day 7, inspect the biggest point of friction. At day 28, expand only if the target action was measured and the sales test produced identifiable demand. Report fulfilled sales net of refunds and direct costs. A product serving trust or internal operations may have no direct sales at all.
 
-**Prerequisite for external promotion.** Original Replit backend and provider contracts remain outside this export. Missing server routes limit local operation. Draft copy and placements go through the existing approval process.
+**Prerequisite for external promotion.** Use the restored server and a fictional checkout for the developer demo. Describe provider partnerships or live settlement only when separately verified. Draft copy and placements go through the existing approval process.
