@@ -1,5 +1,13 @@
 # Green Light Pay Merchant Sandbox
 
+## Find your way in
+
+| If you are… | Start here | Try this |
+| --- | --- | --- |
+| A merchant | [Run the fictional counter](#run-the-counter) | Follow a sample basket through checkout and receipt. |
+| A developer | [Read the sandbox core](sandbox/src/core.mjs) | Trace the local domain logic and simulated flow. |
+| A tester | [Inspect and verify](#inspect-and-verify) | Reproduce a discrepancy with synthetic data. |
+
 [Complete repository tree](docs/DIRECTORY.md) · [Whitepaper](docs/WHITEPAPER.md) · [Marketing and sales plan](docs/MARKETING.md) · [Build record](docs/BUILD-LOG.md)
 
 A cashier starts a fictional sale. A customer opens the checkout on a phone. The developer console shows how the same request passes screening, gains a simulated authorization and acquires a reconciled receipt. A contributor can follow the complete path locally with the recovered Replit server, client and fixtures.
